@@ -1,8 +1,8 @@
 package com.gusparis.monthpicker.builder;
-
+// import android.util.Log;
 class YearNumberPicker extends MonthYearNumberPicker {
 
-  private static final int DEFAULT_SIZE = 204;
+  private static final int DEFAULT_SIZE = 408;
 
   @Override
   YearNumberPicker onScrollListener(MonthYearScrollListener scrollListener) {
@@ -14,14 +14,15 @@ class YearNumberPicker extends MonthYearNumberPicker {
   @Override
   YearNumberPicker build() {
     int year = props.value().getYear();
-    yearPicker.setMinValue(year - DEFAULT_SIZE);
-    yearPicker.setMaxValue(year + DEFAULT_SIZE);
+    int miniumYear = 2021;
+    yearPicker.setMinValue(miniumYear);
+    yearPicker.setMaxValue(miniumYear + DEFAULT_SIZE);
     yearPicker.setValue(year);
-
-    String[] years = new String[408];
-    int minYear = year - DEFAULT_SIZE;
+    // Log.i("year", " >> " + miniumYear + year);
+    String[] years = new String[409];
+    // int minYear = year - DEFAULT_SIZE;
     for(int i=0; i < years.length; i++) {
-      years[i] = Integer.toString(minYear + i) + "年";
+      years[i] = Integer.toString(miniumYear + i) + "年";
     }
     yearPicker.setDisplayedValues(years);
     return this;

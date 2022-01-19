@@ -10,7 +10,7 @@
 #import <React/RCTConvert.h>
 #import <React/RCTUtils.h>
 
-#define DEFAULT_YEAR_SIZE 408
+#define DEFAULT_YEAR_SIZE 204
 #define DEFAULT_MONTH_SIZE 3000
 
 @interface RNMonthPicker() <UIPickerViewDataSource, UIPickerViewDelegate>
@@ -59,7 +59,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
 
 - (void)initYears:(NSInteger)selectedYear {
     years = [NSMutableArray array];
-    for(NSInteger i = selectedYear - DEFAULT_YEAR_SIZE; i <= selectedYear + DEFAULT_YEAR_SIZE; i ++) {
+    for(NSInteger i = 2021 ; i <= 2021 + (DEFAULT_YEAR_SIZE * 2); i ++) {
         [years addObject: [NSNumber numberWithLong:i]];
     }
 }
@@ -70,7 +70,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
         if (!_value) {
             [self initYears: [selectedDateComponents year]];
             selectedMonthRow = (DEFAULT_MONTH_SIZE / 2) + [selectedDateComponents month];
-            selectedYearRow = DEFAULT_YEAR_SIZE;
+            selectedYearRow = 1;
             [self setSelectedRows: NO];
         }
         _value = value;
